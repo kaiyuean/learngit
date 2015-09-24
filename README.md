@@ -18,10 +18,4 @@ The other
 
 asdflfasf
 
-sdjfka
-
-dkjhfka
-
-asdj,fna.f
-
-asjhfajkd
+![HK](https://github.com/kaiyuean/learngit/blob/master/resources/hello-kitty-wallpapers-for-mac.jpg "Hello Kitty")
