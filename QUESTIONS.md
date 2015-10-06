@@ -86,7 +86,7 @@ The following are the changed code:
        return products.remove(0);
     }
 ```
-To solve the second problem of race condition between two different producers, we add synchronized(queue){...} before making a new production. In this case when two or more producers want to make new products and they won't get the same id at the same time. One producer will be allowed to make products and other producers will wait until this producer come out. The following are the changed code:
+To solve the second problem of race condition between two different producers, we add synchronized(queue){...} before making a new production. In this case when two or more producers want to make new products and they won't get the same id at the same time. One producer will be allowed to make product and other producers will wait until this producer come out. The following are the changed code:
 ```
 	while (count < 20) {
       if (queue.size() < 10) {
