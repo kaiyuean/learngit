@@ -20,21 +20,21 @@ However, several concurrency-related problems occurring here: **race condition, 
 * Livelock occurs in the broken code when a thread continuously attempts an action that fails. A thread often acts in response to the action of another thread. If the other thread's action is also a response to the action of another thread, then livelock may result. As with deadlock, livelocked threads are unable to make further progress. However, the threads are not blocked — they are simply too busy responding to each other to resume work.
 * In this program livelock occurs in several situations. For example, it occurs when the message says"Too many items in the queue". The reason is that if the queue size is 9, producer A thread adds a new product. At the same time, producer B thread wakes up and adds a new product to make the queue size to be 10. The previous thread still takes the queue size as 9 and adds product into it, which makes the queue size to be 11. **This is also memory visibility problem between producers**. Moreover, as long as the consumer has a priority lower than that of the producers, they may never be scheduled by the JVM to run and therefore may never be able to consume an item and free up buffer space for the producer. **In this situation, the producers are livelocked waiting for the consumer to free buffer space.** This situation will have outcome as below: 
 ```
-...
-Too many items in the queue: 12!
-Too many items in the queue: 12!
-Too many items in the queue: 12!
-...
+  ...
+  Too many items in the queue: 12!
+  Too many items in the queue: 12!
+  Too many items in the queue: 12!
+  ...
 ```
-The vise-verse situation which illustrates the **starvation** : 
+  The vise-verse situation which illustrates the **starvation** : 
 ```
-...
-Queue empty!
-Queue empty!
-Queue empty!
-...
+  ...
+  Queue empty!
+  Queue empty!
+  Queue empty!
+  ...
 ```
-For the last question, I did not observe this situation. But I found this problem in the fixing process. I guess the reason is because of the **race condition** between producers. Multiple producers are trying to produce a new product at the same time and they share the same ID. 
+  For the last question, I did not observe this situation. But I found this problem in the fixing process. I guess the reason is because of the **race condition** between producers. Multiple producers are trying to produce a new product at the same time and they share the same ID. 
 
 <hr>
 
