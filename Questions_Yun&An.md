@@ -13,7 +13,7 @@ The code describes twenty processes, ten producers and ten consumers, who share 
 However, several concurrency-related problems occurring here: **race condition, memory visibility, starvation and livelock**. 
 
 **Race condition**: 
-* We may have a race condition if two or more threads are accessing the same variables. For example, consider producer A and producer B are trying to increase the same product ID at the same time. Producer A thread has higher priority, so it gets the ID=0 and and adds 1 to the ID. Then producer B wakes up and gets the ID(which is still 0) and adds 1 to the it. 
+* We may have a race condition if two or more threads are accessing the same variables. For example, consider producer A and producer B are trying to increase the same product ID at the same time. Producer A thread has higher priority, so it gets the id=0 and and adds 1 to the ID. Then producer B wakes up and gets the id(which is still 0) and adds 1 to the it. 
 * We may also have a race condition when two(or more) producers want to add products to the queue at the same time and when two(or more) consumers want to remove products from the queue at the same time. 
 
 **Livelock**: 
@@ -44,7 +44,7 @@ For the last question, I did not observe this situation. But I found this proble
 Broken2 program adds synchronized to the methods(size(), append(), retrieve())contained in the ProductionLine.java. Thus when two producers want to add product to the queue at the same time, use synchronized can make sure only one producer add product to the queue each time. When two consumers want to remove product from the queue at the same time, use synchronized can make sure only one cunsomer remove product from the queue each time. Adding synchronized to method size() can make sure when two(or more) producers or two(or more) consumers want to get the size of the queue, they can be synchronized thus they won't get the same size at the same time. 
 
 This program version resolves these problems stated in Question 1: 
-* Race condition between producers and producers when two(or more) producers want to add products to the queue at the same time or 
+* Race condition between producers and producers when two(or more) producers want to add products to the queue at the same time.
 * Race condition between consumers and consumers when two(or more) consumers want to remove products from the queue at the same time. 
 
 However, there still exist two problems. 
