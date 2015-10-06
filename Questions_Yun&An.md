@@ -13,7 +13,7 @@ The code describes twenty processes, ten producers and ten consumers, who share 
 However, several concurrency-related problems occurring here: **race condition, memory visibility, starvation and livelock**. 
 
 **Race condition**: 
-* We may have a race condition if two or more threads are accessing the same variables. For example, consider producer A and producer B are trying to increase the same product ID at the same time. Producer A thread has higher priority, so it gets the id=0 and and adds 1 to the ID. Then producer B wakes up and gets the id(which is still 0) and adds 1 to the it. 
+* We may have a race condition if two or more threads are accessing the same variables. For example, consider producer A and producer B are trying to increase the same product id at the same time. Producer A thread has higher priority, so it gets the id=0 and and adds 1 to the id. Then producer B wakes up and gets the id(which is still 0) and adds 1 to the it. 
 * We may also have a race condition when two(or more) producers want to add products to the queue at the same time and when two(or more) consumers want to remove products from the queue at the same time. 
 
 **Livelock**: 
